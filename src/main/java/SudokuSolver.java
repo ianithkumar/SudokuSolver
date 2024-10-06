@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class SudokuSolver {
   public static void main(String[] args) {
+    long start = System.nanoTime();
+    Scanner sc = new Scanner(System.in);
     int[][] sudokuBoard = {
         {5, 3, 0, 0, 7, 0, 0, 0, 0},
         {6, 0, 0, 1, 9, 5, 0, 0, 0},
@@ -10,13 +14,15 @@ public class SudokuSolver {
         {0, 6, 0, 0, 0, 0, 2, 8, 0},
         {0, 0, 0, 4, 1, 9, 0, 0, 5},
         {0, 0, 0, 0, 8, 0, 0, 7, 9}
-    };
+   };
 
     if (solveSudoku(sudokuBoard)) {
       printSudoku(sudokuBoard);
     } else {
       System.out.println("No solution exists.");
     }
+    long duration = (System.nanoTime()-start)/1000000;
+    System.out.println(duration+"ms");
   }
 
   private static boolean solveSudoku(int[][] board) {
@@ -78,6 +84,6 @@ public class SudokuSolver {
         System.out.print(board[row][col] + " ");
       }
       System.out.println();
-}
+    }
   }
 }
